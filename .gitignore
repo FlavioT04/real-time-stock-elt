@@ -1,0 +1,14 @@
+# mac OS files
+.DS_Store
+
+# PyCharm files
+.idea
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# python files
+__pycache__
+
+# virtual environment
+venv
