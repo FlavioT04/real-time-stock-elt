@@ -1,0 +1,6 @@
+yfinance
+apache-airflow=3.1.5
+kafka-python
+psycopg2-binary
+pandas
+seaborn
