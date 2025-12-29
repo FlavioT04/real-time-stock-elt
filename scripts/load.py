@@ -26,14 +26,14 @@ def load():
     for message in consumer:
         data = message.value
         df = pd.DataFrame([{
-            'symbol': data['symbol'],
-            'open': data['open'],
-            'high': data['high'],
-            'low': data['low'],
-            'close': data['close'],
-            'volume': data['volume'],
-            'dividends': data['dividends'],
-            'stock_splits': data['stock_splits']
+            'symbol': data['Symbol'],
+            'open': data['Open'],
+            'high': data['High'],
+            'low': data['Low'],
+            'close': data['Close'],
+            'volume': data['Volume'],
+            'dividends': data['Dividends'],
+            'stock_splits': data['Stock Splits']
         }])
 
         # insert into db
@@ -44,7 +44,7 @@ def load():
                         INSERT INTO stock_data (symbol, open, high, low, close, volume, dividends, stock_splits)
                         VALUES (:symbol, :open, :high, :low, :close, :volume, :dividends, :stock_splits)
                     """),
-                    **row.to_dict()
+                    row.to_dict()
                 )
             conn.commit()
 

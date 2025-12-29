@@ -20,7 +20,7 @@ def ingest():
     # send data to topic
     for stock in stocks:
         data = yf.Ticker(stock).history(period='1d', interval='1m').tail(1).to_dict('records')[0]
-        data['symbol'] = stock
+        data['Symbol'] = stock
         producer.send(KAFKA_TOPIC, value=data)
         print(f'{stock} data sent to kafka')
 

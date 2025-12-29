@@ -16,6 +16,8 @@ airflow/logs/
 airflow/airflow.db
 airflow/airflow.cfg
 airflow/simple_auth_manager_passwords.json.generated
+airflow/airflow.db-shm
+airflow/airflow.db-wal
 
 # virtual environment
 venv/
