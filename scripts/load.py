@@ -48,4 +48,4 @@ def load():
                 )
             conn.commit()
 
-        print('data loaded into db')
+    print('data loaded into db')

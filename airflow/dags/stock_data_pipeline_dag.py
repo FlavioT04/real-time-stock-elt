@@ -3,11 +3,13 @@ from airflow import DAG
 from airflow.providers.standard.operators.python import PythonOperator
 from scripts.ingest import ingest
 from scripts.load import load
+from scripts.transform import transform
 
 with DAG(
     'stock_data_pipeline',
     default_args={
         'owner': 'flavio',
+        'depends_on_past': True,
         'retries': 1,
         'retry_delay': timedelta(minutes=1),
     },
@@ -28,4 +30,9 @@ with DAG(
         python_callable=load
     )
 
-    ingest_task >> load_task
+    transform_task = PythonOperator(
+        task_id='transform_stock_data',
+        python_callable=transform
+    )
+
+    ingest_task >> load_task >> transform_task
